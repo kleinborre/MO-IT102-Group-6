@@ -10,13 +10,12 @@ public class Main {
 		
 		int arr[] = { 12, 11, 13, 5, 6 };
 		
-		//Compile all the calling methods below;
+		// Compile all the calling methods below;
 		
-		//For Sorting Method 
+		// For Sorting (Insertion Sort Algorithm)
 		Sorting s = new Sorting();
 		s.sort(arr);
 		s.printArray(arr);
-		
 		
 		
 	}
