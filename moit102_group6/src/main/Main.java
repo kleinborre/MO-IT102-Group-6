@@ -12,10 +12,11 @@ public class Main {
 		
 		//Compile all the calling methods below;
 		
-		//For Sorting Method
+		//For Sorting Method 
 		Sorting s = new Sorting();
 		s.sort(arr);
 		s.printArray(arr);
+		
 		
 		
 	}
