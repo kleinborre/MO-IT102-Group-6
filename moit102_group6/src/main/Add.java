@@ -11,6 +11,31 @@ public class Add {
     // Constructor
     public Add() {
         this.inventoryList = new LinkedList<>();
+        // Initialize inventory data directly in the constructor
+        initializeInventory();
+    }
+
+    // Method to initialize the inventory with initial data
+    private void initializeInventory() {
+        String[][] initialInventory = {
+            {"2/1/2023", "Old", "Honda", "142QVTSIUR", "On-hand"},
+            {"2/1/2023", "Old", "Honda", "PZCT1S00XE", "Sold"},
+            {"2/1/2023", "Old", "Honda", "4VBTV8YNM7", "Sold"},
+            {"2/1/2023", "Old", "Honda", "95AN3AWVF4", "On-hand"},
+            {"2/3/2023", "Old", "Kawasaki", "483QHIM661", "On-hand"},
+            {"2/3/2023", "Old", "Kymco", "SPHA17SSEE", "On-hand"},
+            {"2/3/2023", "Old", "Kymco", "0AV7SWGX93", "Sold"},
+            {"2/4/2023", "Old", "Kymco", "QMUB6UYLKL", "Sold"},
+            {"2/4/2023", "Old", "Honda", "V96GMTFFEI", "Sold"},
+            {"2/5/2023", "Old", "Kawasaki", "4J8UA0FMVY", "Sold"},
+            {"2/5/2023", "Old", "Kawasaki", "A8BDL926FA", "Sold"},
+            {"2/5/2023", "Old", "Kawasaki", "X8G5ZZ7A69", "Sold"}
+        };
+
+        // Adding each initial stock to the LinkedList
+        for (String[] stock : initialInventory) {
+            inventoryList.add(stock);
+        }
     }
 
     // Method to add new stock to the linked list
@@ -29,27 +54,6 @@ public class Add {
 
     public static void main(String[] args) {
         Add inventoryManager = new Add();
-
-        // Initial inventory data
-        String[][] inventory = {
-            {"2/1/2023", "Old", "Honda", "142QVTSIUR", "On-hand"},
-            {"2/1/2023", "Old", "Honda", "PZCT1S00XE", "Sold"},
-            {"2/1/2023", "Old", "Honda", "4VBTV8YNM7", "Sold"},
-            {"2/1/2023", "Old", "Honda", "95AN3AWVF4", "On-hand"},
-            {"2/3/2023", "Old", "Kawasaki", "483QHIM661", "On-hand"},
-            {"2/3/2023", "Old", "Kymco", "SPHA17SSEE", "On-hand"},
-            {"2/3/2023", "Old", "Kymco", "0AV7SWGX93", "Sold"},
-            {"2/4/2023", "Old", "Kymco", "QMUB6UYLKL", "Sold"},
-            {"2/4/2023", "Old", "Honda", "V96GMTFFEI", "Sold"},
-            {"2/5/2023", "Old", "Kawasaki", "4J8UA0FMVY", "Sold"},
-            {"2/5/2023", "Old", "Kawasaki", "A8BDL926FA", "Sold"},
-            {"2/5/2023", "Old", "Kawasaki", "X8G5ZZ7A69", "Sold"}
-        };
-
-        // Adding initial inventory to the linked list
-        for (String[] stock : inventory) {
-            inventoryManager.addStock(stock);
-        }
 
         // Display initial inventory
         System.out.println("Initial Inventory:");
