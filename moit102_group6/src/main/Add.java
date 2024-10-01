@@ -1,55 +1,29 @@
 package main;
 
+import java.util.LinkedList;
 import java.util.Scanner;
 
-public class Add{
-	
-	// Node class to represent each stock item in the linked list
-    private static class Node {
-        String[] stockData;
-        Node next;
+public class Add {
 
-        Node(String[] stockData) {
-            this.stockData = stockData;
-            this.next = null;
-        }
-    }
-
-    // Head of the linked list
-    private Node head;
+    // LinkedList to hold stock data (each entry is an array of strings)
+    private LinkedList<String[]> inventoryList;
 
     // Constructor
     public Add() {
-        this.head = null;
+        this.inventoryList = new LinkedList<>();
     }
 
     // Method to add new stock to the linked list
     public void addStock(String[] stockData) {
-        Node newNode = new Node(stockData);
-        if (head == null) {
-            head = newNode; // If the list is empty, set head to new node
-        } else {
-            Node current = head;
-            while (current.next != null) {
-                current = current.next; // Traverse to the end of the list
-            }
-            current.next = newNode; // Add new node at the end
-        }
+        inventoryList.add(stockData); // Use LinkedList's add() method
     }
 
     // Method to display all stocks in the inventory
     public void displayInventory() {
-        Node current = head;
         System.out.printf("%-15s %-10s %-10s %-15s %-10s%n", "Date Entered", "Type", "Brand", "Engine Number", "Status");
         System.out.println("---------------------------------------------------------------");
-        while (current != null) {
-            System.out.printf("%-15s %-10s %-10s %-15s %-10s%n",
-                current.stockData[0],
-                current.stockData[1],
-                current.stockData[2],
-                current.stockData[3],
-                current.stockData[4]);
-            current = current.next; // Move to the next node
+        for (String[] stock : inventoryList) {
+            System.out.printf("%-15s %-10s %-10s %-15s %-10s%n", stock[0], stock[1], stock[2], stock[3], stock[4]);
         }
     }
 
@@ -105,5 +79,4 @@ public class Add{
 
         scanner.close();
     }
-	
 }
