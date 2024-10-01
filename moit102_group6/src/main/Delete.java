@@ -1,87 +1,51 @@
 package main;
 
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Delete {
 
-	// Node class to represent each stock item in the linked list
-    private static class Node {
-        String[] stockData; // Array to hold stock data
-        Node next; // Pointer to the next node
-
-        Node(String[] stockData) {
-            this.stockData = stockData;
-            this.next = null;
-        }
-    }
-
-    // Head of the linked list
-    private Node head;
+    // LinkedList to store the inventory data
+    private LinkedList<String[]> inventoryList;
 
     // Constructor
     public Delete() {
-        this.head = null;
+        this.inventoryList = new LinkedList<>();
     }
 
     // Method to add new stock to the linked list
     public void addStock(String[] stockData) {
-        Node newNode = new Node(stockData);
-        if (head == null) {
-            head = newNode; // If the list is empty, set head to new node
-        } else {
-            Node current = head;
-            while (current.next != null) {
-                current = current.next; // Traverse to the end of the list
-            }
-            current.next = newNode; // Add new node at the end
-        }
+        inventoryList.add(stockData); // Directly add to LinkedList
     }
 
     // Method to delete a stock by engine number
     public void deleteStock(String engineNumber) {
-        if (head == null) {
-            System.out.println("Inventory is empty.");
-            return;
+        boolean found = false;
+        for (int i = 0; i < inventoryList.size(); i++) {
+            String[] stockData = inventoryList.get(i);
+            if (stockData[3].equals(engineNumber)) { // Check if engine number matches
+                inventoryList.remove(i); // Remove the stock from LinkedList
+                System.out.println("Stock with engine number " + engineNumber + " deleted.");
+                found = true;
+                break;
+            }
         }
-
-        // Handle case for the head node
-        if (head.stockData[3].equals(engineNumber)) {
-            head = head.next; // Move head to the next node
-            System.out.println("Stock with engine number " + engineNumber + " deleted.");
-            return;
-        }
-
-        Node current = head;
-        Node previous = null;
-
-        // Traverse the linked list to find the stock to delete
-        while (current != null && !current.stockData[3].equals(engineNumber)) {
-            previous = current;
-            current = current.next;
-        }
-
-        // If the stock was found, delete it
-        if (current != null) {
-            previous.next = current.next; // Bypass the current node
-            System.out.println("Stock with engine number " + engineNumber + " deleted.");
-        } else {
+        if (!found) {
             System.out.println("Stock with engine number " + engineNumber + " not found.");
         }
     }
 
     // Method to display all stocks in the inventory
     public void displayInventory() {
-        Node current = head;
         System.out.printf("%-15s %-10s %-10s %-15s %-10s%n", "Date Entered", "Type", "Brand", "Engine Number", "Status");
         System.out.println("---------------------------------------------------------------");
-        while (current != null) {
+        for (String[] stockData : inventoryList) {
             System.out.printf("%-15s %-10s %-10s %-15s %-10s%n",
-                current.stockData[0],
-                current.stockData[1],
-                current.stockData[2],
-                current.stockData[3],
-                current.stockData[4]);
-            current = current.next; // Move to the next node
+                stockData[0],
+                stockData[1],
+                stockData[2],
+                stockData[3],
+                stockData[4]);
         }
     }
 
@@ -127,5 +91,4 @@ public class Delete {
 
         scanner.close();
     }
-	
 }
