@@ -60,18 +60,18 @@ public class Add {
         inventoryManager.displayInventory();
 
         // Adding new stock
-        Scanner scanner = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
         System.out.println("\nAdd New Stock:");
         System.out.print("Enter Date (MM/DD/YYYY): ");
-        String date = scanner.nextLine();
+        String date = scan.nextLine();
         System.out.print("Enter Type: ");
-        String type = scanner.nextLine();
+        String type = scan.nextLine();
         System.out.print("Enter Brand: ");
-        String brand = scanner.nextLine();
+        String brand = scan.nextLine();
         System.out.print("Enter Engine Number: ");
-        String engineNumber = scanner.nextLine();
+        String engineNumber = scan.nextLine();
         System.out.print("Enter Status: ");
-        String status = scanner.nextLine();
+        String status = scan.nextLine();
 
         // Creating a new stock entry
         String[] newStock = {date, type, brand, engineNumber, status};
@@ -81,6 +81,6 @@ public class Add {
         System.out.println("\nUpdated Inventory:");
         inventoryManager.displayInventory();
 
-        scanner.close();
+        scan.close();
     }
 }
