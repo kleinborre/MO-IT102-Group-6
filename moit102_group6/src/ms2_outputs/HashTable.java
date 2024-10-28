@@ -4,7 +4,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
-class HashTable {
+public class HashTable {
     private String[] table;
     private static final int SIZE = 50;
 
