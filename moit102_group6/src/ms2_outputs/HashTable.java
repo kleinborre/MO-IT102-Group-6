@@ -23,23 +23,30 @@ public class HashTable {
         return Math.abs(hashValue);
     }
 
-    public void insert(String key, String value) throws NoSuchAlgorithmException {
+    public void insert(String key) throws NoSuchAlgorithmException {
         int hashKey = hashFunction(key);
         while (table[hashKey] != null) {
             hashKey = (hashKey + 1) % SIZE;
         }
-        table[hashKey] = value;
+        table[hashKey] = key; // Store the entire stock entry
     }
 
     public String search(String key) throws NoSuchAlgorithmException {
         int hashKey = hashFunction(key);
+        int originalHashKey = hashKey; // Store original hash to detect cycles
+
         while (table[hashKey] != null) {
             if (table[hashKey].equals(key)) {
                 return table[hashKey];
             }
             hashKey = (hashKey + 1) % SIZE;
+
+            // Prevent infinite loop in case of a full table or no match found
+            if (hashKey == originalHashKey) {
+                break;
+            }
         }
-        return null;
+        return null; // Return null if not found
     }
 
     public void delete(String key) throws NoSuchAlgorithmException {
