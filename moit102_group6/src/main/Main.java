@@ -22,6 +22,9 @@ public class Main {
 			if(i % 7 == 0) result += "Bazz";
 			
 			System.out.println(result.isEmpty() ? i : result);
+			
+			// "?" short for if
+			// ":" short for else
 		}
 		
 	}
