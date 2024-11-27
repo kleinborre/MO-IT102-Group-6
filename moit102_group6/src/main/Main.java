@@ -26,6 +26,8 @@ public class Main {
 			// ":" short for else
 		}
 		
+		System.out.println("This is a test.");
+		
 	}
 	
 }
